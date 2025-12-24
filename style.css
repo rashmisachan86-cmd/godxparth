@@ -1,0 +1,235 @@
+:root {
+    --gold: #D4AF37;
+    --gold-light: #F4C430;
+    --dark-bg: #050505;
+    --dark-card: #121212;
+    --text-primary: #ffffff;
+    --text-secondary: #aaaaaa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-primary);
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.invitation-container {
+    position: relative;
+    width: 90%;
+    /* Changed to % as requested */
+    height: 90%;
+    /* Changed to % as requested */
+    max-width: 600px;
+    /* Kept a max-width constraint for card aspect ratio on large screens, but widely flexible */
+    max-height: 90vh;
+    /* Viewport height unit */
+    background: var(--dark-card);
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+}
+
+/* Full screen on mobile */
+@media (max-width: 600px) {
+    .invitation-container {
+        max-width: 100%;
+        max-height: 100vh;
+        border-radius: 0;
+    }
+}
+
+/* Intro Screen */
+#intro-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, #222 0%, #000 100%);
+    z-index: 10;
+    transition: opacity 1s ease;
+}
+
+.gold-btn {
+    background: transparent;
+    color: var(--gold);
+    border: 2px solid var(--gold);
+    padding: 15px 40px;
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.gold-btn:hover {
+    background: var(--gold);
+    color: #000;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+}
+
+/* Main Content */
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#card-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+
+.geometric-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#geo-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.content-overlay {
+    position: relative;
+    z-index: 5;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Profile Picture */
+.user-profile-container {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 30px;
+    position: relative;
+    border-radius: 50%;
+    padding: 5px;
+    background: linear-gradient(45deg, var(--gold), transparent, var(--gold));
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+    animation: rotateBorder 4s linear infinite;
+}
+
+@keyframes rotateBorder {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #000;
+    /* Counter-rotate to keep image upright */
+    animation: rotateBorderReverse 4s linear infinite;
+}
+
+@keyframes rotateBorderReverse {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+/* Typography */
+.title {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards 0.5s;
+}
+
+.subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 5px;
+    color: #fff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards 1s;
+}
+
+.message {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    max-width: 80%;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards 1.5s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tree Icon */
+.tree-icon-container {
+    margin-top: 40px;
+    width: 60px;
+    height: 60px;
+    color: var(--gold);
+    opacity: 0;
+    animation: fadeIn 2s ease forwards 2s;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 0.6;
+    }
+}
+
+/* Blur Effect */
+.blurred {
+    filter: blur(5px);
+    transition: filter 3s ease;
+}
+
+/* Snow Canvas overrides (shared space but managed via JS) */

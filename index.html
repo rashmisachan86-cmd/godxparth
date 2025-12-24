@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>God X Invitation</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <audio id="bg-music" loop>
+        <!-- User needs to put 'christmas-song.mp3' in assets folder -->
+        <source src="assets/christmas-song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="invitation-container">
+
+        <div id="intro-screen">
+            <button id="open-btn" class="gold-btn">OPEN WISH</button>
+        </div>
+
+        <div id="card-content" class="hidden">
+            <div class="geometric-bg">
+                <!-- Particles will be injected here by JS -->
+                <canvas id="geo-canvas"></canvas>
+            </div>
+
+            <div class="content-overlay">
+                <div class="user-profile-container">
+                    <!-- User should replace 'placeholder.png' with 'user-photo.png' -->
+                    <img src="assets/placeholder.png" alt="God X" class="profile-pic" id="user-photo">
+                    <img src="assets/user-photo.png" alt="God X" class="profile-pic hidden" id="real-user-photo"
+                        onerror="this.style.display='none'; document.getElementById('user-photo').style.display='block';">
+                </div>
+
+                <h1 class="title">MERRY CHRISTMAS</h1>
+                <p class="from-text"
+                    style="color: #ccc; font-family: 'Montserrat', sans-serif; letter-spacing: 2px; margin-bottom: 5px;">
+                    FROM</p>
+                <h2 class="subtitle">God X</h2>
+                <p class="message">Wishing you a holiday season filled with peace, love, and infinite joy.</p>
+                <p class="message" style="margin-top: 20px; color: #D4AF37; font-size: 0.85rem;">
+                    And a special thank you to my Elder Sister.
+                </p>
+
+                <div class="tree-icon-container">
+                    <svg class="tree-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+                        <path d="M50 10 L20 80 L80 80 Z" stroke-width="2" />
+                        <path d="M50 20 L25 75 L75 75 Z" stroke-width="1" opacity="0.5" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
